@@ -1,9 +1,25 @@
-import React from 'react'
+import Card from "@/components/dashboard/card/card";
+// import { cards } from "../lib/data";
+import styles from "@/components/dashboard/dashboard.module.css";
+import Chart from "@/components/dashboard/chart/chart";
+import Transactions from "@/components/transactions/transactions";
+// import Rightbar from "../ui/dashboard/rightbar/rightbar";
 
-function Dashboard() {
+
+const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div className={styles.wrapper}>
+      <div className={styles.main}>
+        <div className={styles.cards}>
+            <Card/>
+            <Card />
+            <Card />
+        </div>
+        <Transactions />
+        <Chart />
+      </div>
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

@@ -20,9 +20,9 @@ const Navbar = () => {
           <input type="text" placeholder="Search..." className={styles.input} />
         </div>
         <div className={styles.icons}>
-          <MdOutlineChat size={20} />
-          <MdNotifications size={20} />
-          <MdPublic size={20} />
+          <MdOutlineChat size={30} />
+          <MdNotifications size={30} />
+          <MdPublic size={30} />
         </div>
       </div>
     </div>

@@ -85,13 +85,13 @@ const Sidebar = async () => {
       <div className={styles.user}>
         <Image
           className={styles.userImage}
-          // src={user.img || "/noavatar.png"}
+          src={"/noavatar.png"}
           alt=""
-          width="50"
-          height="50"
+          width="40"
+          height="40"
         />
         <div className={styles.userDetail}>
-          {/* <span className={styles.username}>{user.username}</span> */}
+          <span className={styles.username}>user</span>
           <span className={styles.userTitle}>Administrator</span>
         </div>
       </div>

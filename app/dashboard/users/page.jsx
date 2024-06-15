@@ -1,5 +1,5 @@
-// import { deleteUser } from "@/app/lib/actions";
-import { fetchUsers } from "@/lib/data";
+import { deleteUser } from "@/app/lib/actions";
+import { fetchUsers } from "@/app/lib/data";
 import Pagination from "@/components/dashboard/pagination/pagination";
 import Search from "@/components/dashboard/search/search";
 import styles from "@/components/dashboard/users/users.module.css";
@@ -38,8 +38,8 @@ const UsersPage = async ({ searchParams }) => {
                   <Image
                     src={user.img || "/noavatar.png"}
                     alt=""
-                    width={40}
-                    height={40}
+                    width={30}
+                    height={30}
                     className={styles.userImage}
                   />
                   {user.username}
@@ -56,7 +56,7 @@ const UsersPage = async ({ searchParams }) => {
                       View
                     </button>
                   </Link>
-                  <form action="{deleteUser}">
+                  <form action={deleteUser}>
                     <input type="hidden" name="id" value={(user.id)} />
                     <button className={`${styles.button} ${styles.delete}`}>
                       Delete

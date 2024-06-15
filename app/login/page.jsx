@@ -1,9 +1,12 @@
-import React from 'react'
+import styles from "@/components/login/login.module.css";
+import LoginForm from "@/components/login/loginForm/loginForm";
 
-function LoginPage() {
+const LoginPage = () => {
   return (
-    <div>LoginPage</div>
-  )
-}
+    <div className={styles.container}>
+      <LoginForm/>
+    </div>
+  );
+};
 
-export default LoginPage
+export default LoginPage;

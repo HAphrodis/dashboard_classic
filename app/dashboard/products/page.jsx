@@ -22,10 +22,11 @@ const ProductsPage = async ({ searchParams }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Title</td>
-            <td>Description</td>
+            <td>No</td>
+            <td>Del. date</td>
+            <td>item</td>
+            <td>Qty</td>
             <td>Price</td>
-            <td>Created At</td>
             <td>Stock</td>
             <td>Action</td>
           </tr>
@@ -33,22 +34,13 @@ const ProductsPage = async ({ searchParams }) => {
         <tbody>
           {/* {products.map((product) => ( */}
             <tr>
-              <td>
-                <div className={styles.product}>
-                  <Image
-                    src={"/noproduct.jpg"}
-                    alt=""
-                    width={40}
-                    height={40}
-                    className={styles.productImage}
-                  />
-                  {/* {product.title} */} Kaunga
-                </div>
-              </td>
-              <td>buy ans sell</td>
-              <td>$3000</td>
-              <td>12h30</td>
-              <td>Kacyiru</td>
+              <td>1</td>
+              <td>15.06.2024</td>
+              <td>Vegetables</td>
+              <td>3 kg</td>
+              <td>Frw 1000</td>
+              <td>yes</td>
+              <td>yes</td>
               <td>
                 <div className={styles.buttons}>
                   <Link href={`/`}>

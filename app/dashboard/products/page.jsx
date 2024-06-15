@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../../../components/dashboard/products/products.module.css";
-import Search from "../../../components/dashboard/search/search";
-import Pagination from "../../../components/dashboard/pagination/pagination";
-// import { fetchProducts } from "@/app/lib/data";
-// import { deleteProduct } from "@/app/lib/actions";
+import styles from "@/components/dashboard/products/products.module.css";
+import Search from "@/components/dashboard/search/search";
+import Pagination from "@/components/dashboard/pagination/pagination";
+import { fetchProducts } from "@/lib/data";
+// import { deleteProduct } from "@/lib/actions";
 
 const ProductsPage = async ({ searchParams }) => {
-  // const q = searchParams?.q || "";
-  // const page = searchParams?.page || 1;
-  // const { count, products } = await fetchProducts(q, page);
+  const q = searchParams?.q || "";
+  const page = searchParams?.page || 1;
+  const { count, products } = await fetchProducts(q, page);
 
   return (
     <div className={styles.container}>
@@ -22,34 +22,42 @@ const ProductsPage = async ({ searchParams }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>No</td>
-            <td>Del. date</td>
-            <td>item</td>
-            <td>Qty</td>
+            <td>Title</td>
+            <td>Description</td>
             <td>Price</td>
+            <td>Created At</td>
             <td>Stock</td>
             <td>Action</td>
           </tr>
         </thead>
         <tbody>
-          {/* {products.map((product) => ( */}
-            <tr>
-              <td>1</td>
-              <td>15.06.2024</td>
-              <td>Vegetables</td>
-              <td>3 kg</td>
-              <td>Frw 1000</td>
-              <td>yes</td>
-              <td>yes</td>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>
+                <div className={styles.product}>
+                  <Image
+                    src={product.img || "/noproduct.jpg"}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className={styles.productImage}
+                  />
+                  {product.title}
+                </div>
+              </td>
+              <td>{product.desc}</td>
+              <td>${product.price}</td>
+              <td>{product.createdAt?.toString().slice(4, 16)}</td>
+              <td>{product.stock}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={`/`}>
+                  <Link href={`/dashboard/products/${product.id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
                   </Link>
-                  <form>
-                    <input type="hidden" name="id" />
+                  <form action="">
+                    <input type="hidden" name="id" value={product.id} />
                     <button className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>
@@ -57,10 +65,10 @@ const ProductsPage = async ({ searchParams }) => {
                 </div>
               </td>
             </tr>
-          {/* ))} */}
+          ))}
         </tbody>
       </table>
-      <Pagination/>
+      <Pagination count={count} />
     </div>
   );
 };
